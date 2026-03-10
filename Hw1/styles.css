@@ -8,7 +8,7 @@ body{
     font-family: Arial, sans-serif;
     line-height:1.6;
     color:#333;
-    padding-top:70px; /* account for fixed header */
+    padding-top:70px;
 }
 a{
     text-decoration:none;
@@ -71,7 +71,7 @@ header{
 
 /* Hero Section */
 .hero{
-    background:url('https://via.placeholder.com/1200x500?text=Restaurant+Banner') center/cover no-repeat;
+    background:url('https://imageio.forbes.com/specials-images/imageserve/6601b4ffe472e026432281ca/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds') center/cover no-repeat;
     color:#fff;
     text-align:center;
     padding:100px 20px;
