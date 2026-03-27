@@ -276,3 +276,12 @@ footer{
         align-items:center;
     }
 }
+
+/* Anchor offset for fixed header */
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 80px;
+}

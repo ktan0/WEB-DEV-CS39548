@@ -2,8 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // hamburger toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
     hamburger.addEventListener('click', function() {
         navLinks.classList.toggle('open');
+    });
+
+    navItems.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('open');
+        });
     });
 
     // simple gallery slider
