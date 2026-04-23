@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="cart-item-qty">x${item.quantity}</span>
                 <span class="cart-item-price">${formatCurrency(item.price)}</span>
                 <span class="cart-item-total">${formatCurrency(itemTotal)}</span>
-                <button class="cart-remove" data-name="${name}" type="button">Remove one</button>
+                <button class="cart-remove" data-name="${name}" type="button">Remove</button>
             `;
             cartItemsEl.appendChild(itemEl);
         });
