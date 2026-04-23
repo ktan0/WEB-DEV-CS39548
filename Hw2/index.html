@@ -38,20 +38,24 @@
     <!-- Menu Section -->
     <section id="menu" class="menu">
         <h2>Our Menu</h2>
+        <p class="menu-instructions">Tap the Add button to place items into your cart.</p>
         <div class="menu-container">
             <div class="menu-category">
                 <h3>Appetizers</h3>
                 <div class="menu-item">
                     <span>Garlic Bread</span>
                     <span>$5.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
                 <div class="menu-item">
                     <span>Chicken Wings</span>
                     <span>$8.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
                 <div class="menu-item">
                     <span>Mozzarella Sticks</span>
                     <span>$6.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
             </div>
 
@@ -60,14 +64,17 @@
                 <div class="menu-item">
                     <span>Grilled Salmon</span>
                     <span>$18.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
                 <div class="menu-item">
                     <span>Steak Frites</span>
                     <span>$22.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
                 <div class="menu-item">
                     <span>Chicken Parmesan</span>
                     <span>$16.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
             </div>
 
@@ -76,14 +83,17 @@
                 <div class="menu-item">
                     <span>Chocolate Cake</span>
                     <span>$6.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
                 <div class="menu-item">
                     <span>Tiramisu</span>
                     <span>$7.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
                 <div class="menu-item">
                     <span>Ice Cream</span>
                     <span>$4.99</span>
+                    <button type="button" class="btn add-to-cart">Add</button>
                 </div>
             </div>
         </div>
@@ -92,12 +102,13 @@
     <!-- Shopping Cart -->
     <section id="cart" class="cart">
         <h2>Shopping Cart</h2>
+        <div id="notification" class="notification" aria-live="polite"></div>
         <div id="cart-items" class="cart-items">
             <p>Your cart is empty.</p>
         </div>
         <div class="cart-summary">
             <span id="cart-total">Total: $0.00</span>
-            <button id="clear-cart" class="btn">Clear Cart</button>
+            <button id="clear-cart" class="btn">Remove All</button>
         </div>
     </section>
 

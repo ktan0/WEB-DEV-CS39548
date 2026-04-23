@@ -34,9 +34,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartItemsEl = document.getElementById('cart-items');
     const cartTotalEl = document.getElementById('cart-total');
     const clearCartBtn = document.getElementById('clear-cart');
+    const notificationEl = document.getElementById('notification');
+    let notificationTimeout = null;
 
     function formatCurrency(value) {
         return '$' + value.toFixed(2);
+    }
+
+    function showNotification(message) {
+        if (!notificationEl) return;
+        notificationEl.textContent = message;
+        notificationEl.classList.add('show');
+        if (notificationTimeout) {
+            clearTimeout(notificationTimeout);
+        }
+        notificationTimeout = setTimeout(() => {
+            notificationEl.classList.remove('show');
+        }, 1800);
     }
 
     function renderCart() {
@@ -62,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="cart-item-qty">x${item.quantity}</span>
                 <span class="cart-item-price">${formatCurrency(item.price)}</span>
                 <span class="cart-item-total">${formatCurrency(itemTotal)}</span>
-                <button class="cart-remove" data-name="${name}">Remove</button>
+                <button class="cart-remove" data-name="${name}" type="button">Remove one</button>
             `;
             cartItemsEl.appendChild(itemEl);
         });
@@ -76,23 +90,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         cart[name].quantity += 1;
         renderCart();
+        showNotification(`Added ${name} to cart.`);
     }
 
     function removeItemFromCart(name) {
         if (!cart[name]) return;
-        delete cart[name];
+        cart[name].quantity -= 1;
+        if (cart[name].quantity <= 0) {
+            delete cart[name];
+            showNotification(`${name} removed from cart.`);
+        } else {
+            showNotification(`Removed one ${name}.`);
+        }
         renderCart();
     }
 
     function clearCart() {
+        const hasItems = Object.keys(cart).length > 0;
         Object.keys(cart).forEach(name => delete cart[name]);
         renderCart();
+        if (hasItems) {
+            showNotification('All items removed from cart.');
+        }
     }
 
-    document.querySelectorAll('.menu-item').forEach(menuItem => {
-        menuItem.style.cursor = 'pointer';
-        menuItem.addEventListener('click', function() {
-            const spans = this.querySelectorAll('span');
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function(event) {
+            const menuItem = this.closest('.menu-item');
+            if (!menuItem) return;
+            const spans = menuItem.querySelectorAll('span');
             const name = spans[0].textContent.trim();
             const priceText = spans[1].textContent.replace('$', '').trim();
             const price = parseFloat(priceText);
