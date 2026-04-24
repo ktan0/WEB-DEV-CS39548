@@ -108,8 +108,8 @@ header{
     margin-bottom:10px;
 }
 .menu-item{
-    display:flex;
-    justify-content:space-between;
+    display:grid;
+    grid-template-columns:1fr auto auto;
     align-items:center;
     gap:10px;
     margin-bottom:8px;
