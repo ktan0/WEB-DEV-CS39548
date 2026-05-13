@@ -5,14 +5,10 @@ function Menu({ addToCart }) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    fetchMenu()
-  }, [])
-
   const fetchMenu = async () => {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:5000/api/menu')
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/menu`)
       if (!response.ok) {
         throw new Error('Failed to fetch menu')
       }
@@ -40,6 +36,10 @@ function Menu({ addToCart }) {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchMenu()
+  }, [])
 
   const formatCurrency = (value) => `$${value.toFixed(2)}`
 
